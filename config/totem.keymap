@@ -9,12 +9,7 @@
  * SELENIUM_KEYMAP_BINDINGS for Totem (38 keys)
  *
  * This macro maps the Ækeynox 42-key layout to the Totem 38-key matrix.
- * It discards the 4 outer keys on the top and middle rows (Tab, Bksp, Esc, Enter)
- * which are not physically present on the Totem's 3x5 section,
- * and maps the 12 keys of the bottom row (including extensions) and 6 thumbs.
- *
- * Thumb mapping (Outer, Middle, Inner):
- * LT3 LT2 LT1  RT1 RT2 RT3
+ * Row 3 extensions (LOUT3/ROUT3) are mapped to Shift.
  */
 #define SELENIUM_KEYMAP_BINDINGS(LOUT1, LROW1, RROW1, ROUT1, \
                                  LOUT2, LROW2, RROW2, ROUT2, \
@@ -22,7 +17,7 @@
                                  LT1, LT2, LT3, RT3, RT2, RT1) \
                  LROW1 RROW1 \
                  LROW2 RROW2 \
-           LOUT3 LROW3 RROW3 ROUT3 \
+           &kp LSHFT LROW3 RROW3 &kp RSHFT \
            LT3 LT2 LT1 RT1 RT2 RT3
 
 #define CI_IGNORE_USER_SETTINGS
@@ -36,6 +31,12 @@
             timeout-ms = <50>;
             key-positions = <0 1>;
             bindings = <&kp ESC>;
+        };
+
+        combo_studio_unlock {
+            timeout-ms = <50>;
+            key-positions = <34 35>;
+            bindings = <&studio_unlock>;
         };
     };
 };
